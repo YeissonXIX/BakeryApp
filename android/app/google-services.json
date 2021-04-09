@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "449945112655",
+    "project_id": "bakery-dcd5e",
+    "storage_bucket": "bakery-dcd5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449945112655:android:92d2cdb8c1646dcac51a3a",
+        "android_client_info": {
+          "package_name": "com.example.bakeryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449945112655-40kssf055rb8pjcimumd14k804fsuo96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD391gYZlmKu8Z6FSWVLn7pE9YeBbRUF4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449945112655-40kssf055rb8pjcimumd14k804fsuo96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
