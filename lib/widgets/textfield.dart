@@ -8,21 +8,22 @@ final OutlineInputBorder border = OutlineInputBorder(
 );
 
 class MyTextFormField extends StatelessWidget {
-  MyTextFormField({
-    this.labelName,
-    this.hintName,
-    this.obscureText = false,
-    this.showMessagError,
-    this.lengthLimiter,
-    this.controller,
-    this.keyBoardType,
-  });
+  MyTextFormField(
+      {this.labelName,
+      this.hintName,
+      this.obscureText = false,
+      this.showMessagError,
+      this.lengthLimiter,
+      this.controller,
+      this.keyBoardType,
+      this.error});
 
   final TextInputType keyBoardType;
   final String labelName;
   final String showMessagError;
   final String hintName;
   final bool obscureText;
+  final String error;
   final LengthLimitingTextInputFormatter lengthLimiter;
   final TextEditingController controller;
   @override

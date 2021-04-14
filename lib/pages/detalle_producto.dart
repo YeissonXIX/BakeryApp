@@ -1,11 +1,17 @@
+import 'package:bakeryapp/controller/pedido_controller.dart';
+import 'package:bakeryapp/provider/firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class DetalleProducto extends StatelessWidget {
+class DetalleProducto extends GetView<PedidoController> {
   static final String path = 'detalleproducto';
+  final img;
+
+  DetalleProducto({this.img});
 
   @override
   Widget build(BuildContext context) {
-    //MovieModel movie = ModalRoute.of(context).settings.arguments;
+    Map pastel = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -13,7 +19,7 @@ class DetalleProducto extends StatelessWidget {
             expandedHeight: 180,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.network(
-                "https://t1.rg.ltmcdn.com/es/images/2/4/9/img_pastel_de_fresa_23942_orig.jpg",
+                pastel['img'],
                 fit: BoxFit.cover,
               ),
             ),
@@ -28,7 +34,7 @@ class DetalleProducto extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      'Pastel de chocolate',
+                      pastel['nombre'],
                       style: TextStyle(fontSize: 25.0),
                     ),
                     SizedBox(
@@ -37,7 +43,7 @@ class DetalleProducto extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        '''During development, there are times when we may need to generate random numbers, alphabets, characters with a specified length. In this article, I will walk you through how to generate random string using that ‘dart:math‘ library.''',
+                        pastel['descripcion'],
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),
@@ -55,7 +61,7 @@ class DetalleProducto extends StatelessWidget {
                                 TextStyle(fontSize: 25.0, color: Colors.black),
                           ),
                           Text(
-                            'L99.00',
+                            '${pastel['precio']}',
                             style: TextStyle(
                                 fontSize: 25.0, color: Colors.green[800]),
                           ),
@@ -73,7 +79,7 @@ class DetalleProducto extends StatelessWidget {
                                 fontSize: 20.0, color: Colors.grey[800]),
                           ),
                           Text(
-                            'Chocolate',
+                            '${pastel['precio']}',
                             style: TextStyle(
                                 fontSize: 20.0, color: Colors.green[800]),
                           ),
@@ -88,7 +94,12 @@ class DetalleProducto extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 10.0),
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.pedidos.add(pastel);
+                          FirestoreService().subirPedido(controller.pedidos);
+                          controller.obtenerPedidos();
+                          controller.calcularPedido();
+                        },
                         child: Text('Mandar a carrito'),
                       ),
                     )
