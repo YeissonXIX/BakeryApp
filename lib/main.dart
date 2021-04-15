@@ -1,12 +1,12 @@
 import 'package:bakeryapp/pages/detalle_producto.dart';
 import 'package:bakeryapp/pages/home.dart';
+import 'package:bakeryapp/pages/ingresar_producto.dart';
 import 'package:bakeryapp/pages/login.dart';
 import 'package:bakeryapp/pages/registro.dart';
+import 'package:custom_splash/custom_splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-
-import 'controller/login_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,12 +24,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: Home(),
+      home: CustomSplash(
+        imagePath: 'assets/pastelogo.png',
+        backGroundColor: Colors.white,
+        animationEffect: 'zoom-in',
+        logoSize: 200,
+        home: Home(),
+        duration: 2500,
+        type: CustomSplashType.StaticDuration,
+      ),
       routes: {
         Registro.path: (c) => Registro(),
         LoginPage.path: (e) => LoginPage(),
         Home.path: (e) => Home(),
         DetalleProducto.path: (e) => DetalleProducto(),
+        IngresarProducto.path: (e) => IngresarProducto(),
       },
     );
   }

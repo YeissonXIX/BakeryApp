@@ -1,10 +1,14 @@
+import 'package:bakeryapp/controller/login_controller.dart';
 import 'package:bakeryapp/controller/pedido_controller.dart';
+import 'package:bakeryapp/pages/ingresar_producto.dart';
 import 'package:bakeryapp/provider/firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class DetalleProducto extends GetView<PedidoController> {
   static final String path = 'detalleproducto';
+  LoginController loginController = Get.find<LoginController>();
   final img;
 
   DetalleProducto({this.img});
@@ -89,20 +93,36 @@ class DetalleProducto extends GetView<PedidoController> {
                     SizedBox(
                       height: 100.0,
                     ),
-                    Container(
-                      height: 50,
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          controller.pedidos.add(pastel);
-                          FirestoreService().subirPedido(controller.pedidos);
-                          controller.obtenerPedidos();
-                          controller.calcularPedido();
-                        },
-                        child: Text('Mandar a carrito'),
-                      ),
-                    )
+                    if (loginController.loggedUser['admin']) ...[
+                      Container(
+                        height: 50,
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(
+                                IngresarProducto.path,
+                                arguments: pastel);
+                          },
+                          child: Text('Actualizar datos'),
+                        ),
+                      )
+                    ] else ...[
+                      Container(
+                        height: 50,
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            controller.pedidos.add(pastel);
+                            FirestoreService().subirPedido(controller.pedidos);
+                            controller.obtenerPedidos();
+                            controller.calcularPedido();
+                          },
+                          child: Text('Mandar a carrito'),
+                        ),
+                      )
+                    ]
                   ],
                 ),
               ],

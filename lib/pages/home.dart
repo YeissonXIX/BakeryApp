@@ -110,13 +110,18 @@ class _HomeState extends State<Home> {
                     itemBuilder: (c, i) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(DetalleProducto.path, arguments: {
-                            'img': snapshot.data[i]["pictureUrl"],
-                            'nombre': snapshot.data[i]["nombre"],
-                            'precio': snapshot.data[i]["precio"],
-                            'descripcion': snapshot.data[i]["descripcion"]
-                          });
+                          if (loginController.isLogged.value) {
+                            Navigator.of(context)
+                                .pushNamed(DetalleProducto.path, arguments: {
+                              'img': snapshot.data[i]["pictureUrl"],
+                              'nombre': snapshot.data[i]["nombre"],
+                              'precio': snapshot.data[i]["precio"],
+                              'descripcion': snapshot.data[i]["descripcion"]
+                            });
+                          } else {
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (_) => LoginPage()));
+                          }
                         },
                         child: Column(
                           children: [

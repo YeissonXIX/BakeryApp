@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class IngresarProducto extends StatefulWidget {
+  static const path = 'ingreso';
   const IngresarProducto({Key key}) : super(key: key);
 
   @override
@@ -16,6 +17,7 @@ class IngresarProducto extends StatefulWidget {
 }
 
 class _IngresarProductoState extends State<IngresarProducto> {
+  String imgpath = '';
   final TextEditingController controller1 = TextEditingController();
 
   final TextEditingController controller2 = TextEditingController();
@@ -30,6 +32,15 @@ class _IngresarProductoState extends State<IngresarProducto> {
       controller4.text.isEmpty;
   @override
   Widget build(BuildContext context) {
+    /* Map pastel;
+    if (ModalRoute.of(context)?.settings != null) {
+      pastel = ModalRoute.of(context).settings.arguments;
+      controller1.text = pastel['nombre'];
+      controller2.text = pastel['precio'];
+      controller3.text = pastel['tipo'];
+      controller4.text = pastel['descripcion'];
+      imgpath = pastel['pictureUrl'];
+    } */
     return Scaffold(
       appBar: AppBar(
         title: Text('Ingrese nuevo producto'),
@@ -45,19 +56,23 @@ class _IngresarProductoState extends State<IngresarProducto> {
                   setState(() {});
                 },
                 child: Container(
-                  width: double.infinity,
-                  height: 200.0,
-                  color: Colors.grey,
-                  child: foto != null
-                      ? Image(
-                          image: FileImage(foto),
-                          fit: BoxFit.contain,
-                        )
-                      : Icon(
-                          Icons.camera_alt_outlined,
-                          size: 100.0,
-                        ),
-                ),
+                    width: double.infinity,
+                    height: 200.0,
+                    color: Colors.grey,
+                    child: foto != null
+                        ? Image(
+                            image: FileImage(foto),
+                            fit: BoxFit.contain,
+                          )
+                        : imgpath?.isEmpty ?? true
+                            ? Icon(
+                                Icons.camera_alt_outlined,
+                                size: 100.0,
+                              )
+                            : Image(
+                                image: NetworkImage(imgpath),
+                                fit: BoxFit.contain,
+                              )),
               ),
               SizedBox(height: 10.0),
               MyTextFormField(

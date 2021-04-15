@@ -52,6 +52,7 @@ class FirestoreService {
     CollectionReference users =
         FirebaseFirestore.instance.collection('pasteles');
     // Call the user's CollectionReference to add a new user
+
     return users
         .add({
           'nombre': nombre,
