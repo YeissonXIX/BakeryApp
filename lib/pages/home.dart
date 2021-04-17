@@ -25,11 +25,8 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
-  var _future;
-
   @override
   Widget build(BuildContext context) {
-    _future = FirestoreService().obtenerPasteles();
     LoginController loginController = Get.find<LoginController>();
     return Scaffold(
       appBar: AppBar(
