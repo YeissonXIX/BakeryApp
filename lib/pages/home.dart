@@ -129,7 +129,7 @@ class _HomeState extends State<Home> {
                               child: CachedNetworkImage(
                                 imageUrl: snapshot.data[i]["pictureUrl"],
                                 placeholder: (context, url) =>
-                                    Image.asset('assets/loading.gif'),
+                                    Center(child: CircularProgressIndicator()),
                                 errorWidget: (context, url, error) =>
                                     Icon(Icons.error),
                                 fit: BoxFit.cover,

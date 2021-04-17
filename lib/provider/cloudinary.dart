@@ -1,12 +1,15 @@
 import 'dart:io';
 
-import 'package:cloudinary_client/cloudinary_client.dart';
+import 'package:cloudinary_sdk/cloudinary_sdk.dart';
 
 class CloudinaryProvider {
   subirImagen(File file) async {
-    CloudinaryClient client = new CloudinaryClient(
+    final cloudinary = Cloudinary(
         '794812174781711', 'Sv5LdqNxBxkZZEIlWffCKJJHhb0', 'dlgqfma3d');
-    var response = await client.uploadImage(file.path);
-    return response.secure_url;
+    final response = await cloudinary.uploadFile(
+      filePath: file.path,
+      resourceType: CloudinaryResourceType.image,
+    );
+    return response.secureUrl;
   }
 }

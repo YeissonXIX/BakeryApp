@@ -6,6 +6,6 @@ class CargarImagen {
   File archivo;
 
   cargarImagen() async {
-    return await ImagePicker.pickImage(source: ImageSource.gallery);
+    return await ImagePicker().getImage(source: ImageSource.gallery);
   }
 }
