@@ -7,6 +7,7 @@ import 'package:bakeryapp/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class IngresarProducto extends StatefulWidget {
   static const path = 'ingreso';
@@ -52,7 +53,8 @@ class _IngresarProductoState extends State<IngresarProducto> {
             children: [
               InkWell(
                 onTap: () async {
-                  foto = await CargarImagen().cargarImagen();
+                  PickedFile pickedfield = await CargarImagen().cargarImagen();
+                  foto = File(pickedfield.path);
                   setState(() {});
                 },
                 child: Container(
