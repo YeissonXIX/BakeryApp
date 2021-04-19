@@ -37,8 +37,7 @@ class _HomeState extends State<Home> {
           () => ListView(
             children: [
               ListTile(
-                title: Obx(() => Text(
-                    'Bienvenido @${loginController.loggedUser['nombre']} ${loginController.loggedUser['apellido']}')),
+                title: Obx(() => Text('Bienvenido @${loginController.loggedUser['nombre']} ${loginController.loggedUser['apellido']}')),
                 subtitle: Text('a la mejor tienda de pasteleria online'),
               ),
               if (!loginController.isLogged.value) ...[
@@ -70,7 +69,7 @@ class _HomeState extends State<Home> {
                   true) ...[
                 ListTile(
                   onTap: () {
-                    Get.to(Pedidos());
+                    Get.to(() => Pedidos());
                   },
                   leading: Icon(Icons.shopping_basket_outlined),
                   title: Text('Pedidos'),

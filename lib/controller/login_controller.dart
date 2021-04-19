@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  var loggedUser =
-      <String, dynamic>{'nombre': 'usuario', 'apellido': 'invitado'}.obs;
+  var loggedUser = <String, dynamic>{'nombre': 'usuario', 'apellido': 'invitado'}.obs;
   var isLogged = false.obs;
 
   registrarse(String nombre, String apellido, String correo, String contrasena,

@@ -61,7 +61,7 @@ class _RegistroState extends State<Registro> {
                     controller: controller1,
                     labelName: 'Usuario',
                     hintName: 'Usuario',
-                    lengthLimiter: LengthLimitingTextInputFormatter(20),
+                    lengthLimiter: LengthLimitingTextInputFormatter(50),
                     showMessagError: error,
                   ),
                 ),
@@ -71,7 +71,7 @@ class _RegistroState extends State<Registro> {
                     controller: controller2,
                     labelName: 'Apellido',
                     hintName: 'Apellido',
-                    lengthLimiter: LengthLimitingTextInputFormatter(20),
+                    lengthLimiter: LengthLimitingTextInputFormatter(50),
                     showMessagError: error,
                   ),
                 ),
@@ -81,7 +81,7 @@ class _RegistroState extends State<Registro> {
                     controller: controller5,
                     labelName: 'Correo',
                     hintName: 'Correo',
-                    lengthLimiter: LengthLimitingTextInputFormatter(20),
+                    lengthLimiter: LengthLimitingTextInputFormatter(50),
                     showMessagError: error,
                   ),
                 ),
@@ -92,7 +92,7 @@ class _RegistroState extends State<Registro> {
                     obscureText: true,
                     labelName: 'Contraseña',
                     hintName: 'Contraseña',
-                    lengthLimiter: LengthLimitingTextInputFormatter(20),
+                    lengthLimiter: LengthLimitingTextInputFormatter(50),
                     showMessagError: passError,
                   ),
                 ),
@@ -103,7 +103,7 @@ class _RegistroState extends State<Registro> {
                     obscureText: true,
                     labelName: 'Confirme contraseña',
                     hintName: 'Confirme contraseña',
-                    lengthLimiter: LengthLimitingTextInputFormatter(20),
+                    lengthLimiter: LengthLimitingTextInputFormatter(50),
                     showMessagError: passError,
                   ),
                 ),
@@ -129,11 +129,12 @@ class _RegistroState extends State<Registro> {
                         error = null;
                         passError = null;
                         await controller.registrarse(
-                            controller1.text,
-                            controller2.text,
-                            controller5.text,
-                            controller3.text,
-                            controller4.text);
+                          controller1.text,
+                          controller2.text,
+                          controller5.text,
+                          controller3.text,
+                          controller4.text,
+                        );
                         controller1.text = '';
                         controller2.text = '';
                         controller3.text = '';

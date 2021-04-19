@@ -56,7 +56,7 @@ class FirestoreService {
     return users
         .add({
           'nombre': nombre,
-          'precio': precio,
+          'precio': double.parse(precio),
           'tipo': tipo,
           'descripcion': descripcion,
           'pictureUrl': imagenUrl,

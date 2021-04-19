@@ -33,15 +33,6 @@ class _IngresarProductoState extends State<IngresarProducto> {
       controller4.text.isEmpty;
   @override
   Widget build(BuildContext context) {
-    /* Map pastel;
-    if (ModalRoute.of(context)?.settings != null) {
-      pastel = ModalRoute.of(context).settings.arguments;
-      controller1.text = pastel['nombre'];
-      controller2.text = pastel['precio'];
-      controller3.text = pastel['tipo'];
-      controller4.text = pastel['descripcion'];
-      imgpath = pastel['pictureUrl'];
-    } */
     return Scaffold(
       appBar: AppBar(
         title: Text('Ingrese nuevo producto'),
@@ -80,7 +71,7 @@ class _IngresarProductoState extends State<IngresarProducto> {
               MyTextFormField(
                 labelName: 'Nombre',
                 hintName: 'Nombre',
-                lengthLimiter: LengthLimitingTextInputFormatter(20),
+                lengthLimiter: LengthLimitingTextInputFormatter(30),
                 controller: controller1,
                 showMessagError: error,
               ),
@@ -88,15 +79,16 @@ class _IngresarProductoState extends State<IngresarProducto> {
               MyTextFormField(
                 labelName: 'Precio',
                 hintName: 'Precio',
-                lengthLimiter: LengthLimitingTextInputFormatter(20),
+                lengthLimiter: LengthLimitingTextInputFormatter(30),
                 controller: controller2,
                 showMessagError: error,
+                keyBoardType: TextInputType.number,
               ),
               SizedBox(height: 10.0),
               MyTextFormField(
                 labelName: 'Tipo',
                 hintName: 'Tipo',
-                lengthLimiter: LengthLimitingTextInputFormatter(20),
+                lengthLimiter: LengthLimitingTextInputFormatter(30),
                 controller: controller3,
                 showMessagError: error,
               ),
