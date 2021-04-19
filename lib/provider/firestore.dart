@@ -32,7 +32,7 @@ class FirestoreService {
     LoginController loginController = Get.put(LoginController());
     return users
         .doc('${loginController.loggedUser['correo']}')
-        .update({'pedido': pedidos})
+        .update({'pedidos': pedidos})
         .then((value) => Get.showSnackbar(GetBar(
               duration: Duration(milliseconds: 4000),
               animationDuration: Duration(milliseconds: 500),
@@ -45,6 +45,15 @@ class FirestoreService {
               isDismissible: true,
             )))
         .catchError((error) => print("Failed to add user: $error"));
+  }
+
+  Future<List> obtenerPedidosDeFirebase() async {
+    CollectionReference users =
+        FirebaseFirestore.instance.collection('usuarios');
+    LoginController loginController = Get.put(LoginController());
+    var querySnapshot =
+        await users.doc('${loginController.loggedUser['correo']}').get();
+    return querySnapshot.data()['pedidos'];
   }
 
   Future<void> subirProducto(String nombre, String precio, String tipo,

@@ -9,55 +9,55 @@ class Pedidos extends GetView<PedidoController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.obtenerPedidos();
-    controller.calcularPedido();
     return Scaffold(
       appBar: AppBar(
         title: Text('Pedidos'),
       ),
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: controller.pedidos.length,
-              itemBuilder: (c, i) {
-                return Container(
-                  height: 100.0,
-                  child: Card(
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 80.0,
-                          height: 80.0,
-                          child: CircleAvatar(
-                            maxRadius: 50.0,
-                            backgroundImage:
-                                NetworkImage('${controller.pedidos[i]['img']}'),
+          Obx(
+            () => Expanded(
+              child: ListView.builder(
+                itemCount: controller.pedidos.length,
+                itemBuilder: (c, i) {
+                  return Container(
+                    height: 100.0,
+                    child: Card(
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 80.0,
+                            height: 80.0,
+                            child: CircleAvatar(
+                              maxRadius: 50.0,
+                              backgroundImage: NetworkImage(
+                                  '${controller.pedidos[i]['img']}'),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${controller.pedidos[i]['nombre']}',
-                              style: TextStyle(fontSize: 20.0),
-                            ),
-                            Text(
-                              'Precio: L.${controller.pedidos[i]['precio']}',
-                              style: TextStyle(
-                                  fontSize: 16.0, color: Colors.green),
-                            ),
-                          ],
-                        )
-                      ],
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${controller.pedidos[i]['nombre']}',
+                                style: TextStyle(fontSize: 20.0),
+                              ),
+                              Text(
+                                'Precio: L.${controller.pedidos[i]['precio']}',
+                                style: TextStyle(
+                                    fontSize: 16.0, color: Colors.green),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
           Container(

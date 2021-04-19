@@ -1,3 +1,4 @@
+import 'package:bakeryapp/provider/firestore.dart';
 import 'package:get/get.dart';
 
 import 'login_controller.dart';
@@ -16,9 +17,8 @@ class PedidoController extends GetxController {
     total.value = (subtotal.value * 1.15).roundToDouble();
   }
 
-  obtenerPedidos() {
-    LoginController loginController = Get.find<LoginController>();
-    pedidos = [].obs;
-    pedidos.addAll(loginController.loggedUser['pedido']);
+  Future obtenerPedidos() async {
+    pedidos.value = [];
+    pedidos.addAll(await FirestoreService().obtenerPedidosDeFirebase());
   }
 }

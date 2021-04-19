@@ -83,7 +83,7 @@ class DetalleProducto extends GetView<PedidoController> {
                                 fontSize: 20.0, color: Colors.grey[800]),
                           ),
                           Text(
-                            '${pastel['precio']}',
+                            '${pastel['tipo']}',
                             style: TextStyle(
                                 fontSize: 20.0, color: Colors.green[800]),
                           ),

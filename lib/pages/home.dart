@@ -28,6 +28,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     LoginController loginController = Get.find<LoginController>();
+    PedidoController pedidoController = Get.find<PedidoController>();
     return Scaffold(
       appBar: AppBar(
         title: Text('Bakery'),
@@ -37,7 +38,8 @@ class _HomeState extends State<Home> {
           () => ListView(
             children: [
               ListTile(
-                title: Obx(() => Text('Bienvenido @${loginController.loggedUser['nombre']} ${loginController.loggedUser['apellido']}')),
+                title: Obx(() => Text(
+                    'Bienvenido @${loginController.loggedUser['nombre']} ${loginController.loggedUser['apellido']}')),
                 subtitle: Text('a la mejor tienda de pasteleria online'),
               ),
               if (!loginController.isLogged.value) ...[
@@ -68,7 +70,9 @@ class _HomeState extends State<Home> {
                       !loginController.loggedUser['admin'] ??
                   true) ...[
                 ListTile(
-                  onTap: () {
+                  onTap: () async {
+                    await pedidoController.obtenerPedidos();
+                    pedidoController.calcularPedido();
                     Get.to(() => Pedidos());
                   },
                   leading: Icon(Icons.shopping_basket_outlined),
@@ -112,6 +116,7 @@ class _HomeState extends State<Home> {
                               'img': snapshot.data[i]["pictureUrl"],
                               'nombre': snapshot.data[i]["nombre"],
                               'precio': snapshot.data[i]["precio"],
+                              'tipo': snapshot.data[i]["tipo"],
                               'descripcion': snapshot.data[i]["descripcion"]
                             });
                           } else {
