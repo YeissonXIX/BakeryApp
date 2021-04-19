@@ -18,6 +18,7 @@ class PedidoController extends GetxController {
 
   obtenerPedidos() {
     LoginController loginController = Get.find<LoginController>();
+    pedidos = [].obs;
     pedidos.addAll(loginController.loggedUser['pedido']);
   }
 }

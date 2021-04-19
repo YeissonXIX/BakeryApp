@@ -98,14 +98,6 @@ class DetalleProducto extends GetView<PedidoController> {
                         height: 50,
                         padding: EdgeInsets.symmetric(horizontal: 10.0),
                         width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed(
-                                IngresarProducto.path,
-                                arguments: pastel);
-                          },
-                          child: Text('Actualizar datos'),
-                        ),
                       )
                     ] else ...[
                       Container(
